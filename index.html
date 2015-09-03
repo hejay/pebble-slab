@@ -11,40 +11,22 @@
   <body>
     <div data-role="page" id="main">
       <div data-role="header" class="jqm-header">
-        <h1>Configurable Pebble App</h1>
+        <h1>Pebble Slab Configuration</h1>
       </div>
 
       <div data-role="content">
-
+        
         <div data-role="fieldcontain">
-          <label for="name">Name:</label>
-          <textarea cols="40" rows="8" name="name" id="name"></textarea>
-        </div>
-
-        <div data-role="fieldcontain">
-          <label for="special-feature">Activate special feature:</label>
-          <select name="special-feature" id="special-feature" data-role="slider">
+          <label for="use-gps">Use GPS for weather?</label>
+          <select name="use-gps" id="use-gps" data-role="slider">
             <option value="off">Off</option>
             <option value="on">On</option>
           </select>
         </div>
-
+        
         <div data-role="fieldcontain">
-          <fieldset data-role="controlgroup">
-            <legend>Choose as many snacks as you'd like:</legend>
-            <input type="checkbox" name="checkbox-cheetos" id="checkbox-cheetos" class="custom" />
-            <label for="checkbox-cheetos">Cheetos</label>
-
-            <input type="checkbox" name="checkbox-doritos" id="checkbox-doritos" class="custom" />
-            <label for="checkbox-doritos">Doritos</label>
-
-            <input type="checkbox" name="checkbox-fritos" id="checkbox-fritos" class="custom" />
-            <label for="checkbox-fritos">Fritos</label>
-
-            <input type="checkbox" name="checkbox-sunchips" id="checkbox-sunchips" class="custom" />
-            <label for="checkbox-sunchips">Sun Chips</label>
-            </fieldset>
-          </div>
+          <label for="location-code">Manual Location:</label>
+          <input type="text" size="10" name="location-code" id="location-code"></textarea>
         </div>
 
         <div class="ui-body ui-body-b">
@@ -58,12 +40,12 @@
     </div>
     <script>
       function saveOptions() {
-        var options = {}
+        var slabOptions = {}
         //Add all textual values
-        $('textarea, select, [type="hidden"], [type="password"], [type="text"]').each(function(){options[$(this).attr('id')] = $(this).val();})
+        $('select, [type="hidden"], [type="text"]').each(function(){slabOptions[$(this).attr('id')] = $(this).val();})
         //Add all checkbox type values
         $('[type="radio"], [type="checkbox"]').each(function(){options[$(this).attr('id')] = $(this).is(':checked');})
-        return options;
+        return slabOptions;
       }
       $().ready(function() {
         $("#b-cancel").click(function() {
